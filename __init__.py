@@ -1,7 +1,7 @@
 #This states the metadata for the plugin
 bl_info = {
     "name": "Dark Blender R1",
-    "author": "Linko, Raven, Crocadillian",
+    "author": "Linko, Crocadillian",
     "version": (1, 0),
     "blender": (2, 76),
     "api": 39347,
