@@ -87,7 +87,7 @@ class DB_Prep_Dynatopo(Operator):
 
 
 class DB_Extract_Mesh(Operator):
-    """Whatever parts of the mesh are selected will be extracted to a new mesh object, with a Subsurface and Solidify modifier.  Ideal for sculpting."""
+    """...ill get back to you on that one."""
 
     bl_idname = "scene.gx_extractmesh"
     bl_label = "Extract Mesh"
