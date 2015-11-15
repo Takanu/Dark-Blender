@@ -2,7 +2,7 @@
 bl_info = {
     "name": "Dark Blender",
     "author": "Linko, Crocadillian",
-    "version": (1, 0),
+    "version": (2, 0),
     "blender": (2, 76),
     "api": 39347,
     "location": "3D View > Object Mode > Tools > Dark Blender",
