@@ -7,18 +7,17 @@ from rna_prop_ui import PropertyPanel
 class DB_ObjectMode(Panel):
     bl_space_type = "VIEW_3D"
     bl_region_type = "TOOLS"
-    bl_context = "objectmode"
-    bl_label = "Tools"
-    bl_category = "Dark Blender"
+    bl_context = "objectmode" # When the panel will appear
+    bl_label = "Tools" # Dropdown Title
+    bl_category = "Dark Blender" # Tab category
 
     def draw(self, context):
         layout = self.layout
 
-        print("Am i here yet? <<<<<<<<<<<<<<")
-
         col_export = layout.column(align=True)
         col_export.label("Additional Primitives")
         col_export.operator("scene.db_addpipe")
+        col_export.operator("scene.db_addeyes")
         col_export.separator()
 
         col_export.label("Sculpt/Organic Mesh Tools")
