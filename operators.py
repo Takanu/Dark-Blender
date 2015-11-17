@@ -58,23 +58,28 @@ class DB_Add_Eyes(Operator):
         print(self)
 
         #Add Eyes
-        import bpy
-
         bpy.ops.mesh.primitive_uv_sphere_add(view_align=False, enter_editmode=False, location=(0, 0, 0), layers=(True, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False))
 
         bpy.ops.object.mode_set(mode = 'EDIT')
 
         bpy.ops.transform.rotate(value=1.5708, axis=(1, 0, 0), constraint_axis=(True, False, False), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
+
         bpy.ops.transform.resize(value=(0.5, 0.5, 0.5), constraint_axis=(False, False, False), constraint_orientation='NORMAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
+
         bpy.ops.transform.translate(value=(1, 0, 0), constraint_axis=(True, False, False), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
+
         bpy.ops.transform.rotate(value=0.0174532, axis=(0, 0, 1), constraint_axis=(False, False, True), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
 
         bpy.ops.object.mode_set(mode= 'OBJECT')
+
         bpy.ops.object.modifier_add(type='MIRROR')
+
         bpy.context.object.modifiers["Mirror"].show_on_cage = True
+
+        bpy.ops.object.shade_smooth()
         bpy.ops.object.mode_set(mode = 'EDIT')
 
-        self.report({'INFO'}, "Added Pipe.")
+        self.report({'INFO'}, "Added Eyes.")
 
         return {'FINISHED'}
 
@@ -331,21 +336,11 @@ class DB_Quick_Decimate(Operator):
         #Quick Decimation
         bpy.ops.object.mode_set(mode = 'OBJECT')
 
-        bpy.ops.object.convert(target='MESH')
-
-        bpy.ops.object.mode_set(mode = 'EDIT')
-        bpy.ops.mesh.select_all(action = 'SELECT')
-        bpy.ops.mesh.remove_doubles()
-        bpy.ops.mesh.normals_make_consistent(inside=False)
-
-        bpy.ops.object.mode_set(mode = 'OBJECT')
-
         bpy.ops.object.modifier_add(type='DECIMATE')
         bpy.context.object.modifiers["Decimate"].ratio = 0.8
         bpy.context.object.modifiers["Decimate"].use_collapse_triangulate = True
         bpy.ops.object.modifier_apply(apply_as='DATA', modifier="Decimate")
-
-        bpy.ops.object.mode_set(mode = 'OBJECT')
+        bpy.ops.object.mode_set(mode = 'EDIT')
 
         self.report({'INFO'}, "Mesh successfully decimated.")
 
